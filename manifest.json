@@ -1,0 +1,16 @@
+{
+  "name": "成都好好吃",
+  "short_name": "成都美食",
+  "description": "99家成都地道美食指南",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#faf5ef",
+  "theme_color": "#dc2626",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23dc2626'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='white'%3E🍜%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
