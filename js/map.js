@@ -34,8 +34,9 @@ function initMap(centerShopId) {
         markerZoomAnimation: true
       });
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap',
+      // 使用高德地图瓦片（国内可直连，无需 API Key）
+      L.tileLayer('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+        attribution: '&copy; AutoNavi',
         maxZoom: 18,
         errorTileUrl: ''
       }).addTo(map);
@@ -43,7 +44,6 @@ function initMap(centerShopId) {
       // Handle tile load errors
       map.on('tileerror', function(e) {
         console.warn('Tile load error:', e);
-        // Don't show error overlay for individual tile failures
       });
 
       mapInitialized = true;
@@ -54,9 +54,10 @@ function initMap(centerShopId) {
     }
   }
 
-  // Ensure container has explicit height
-  const h = window.innerHeight - 120;
+  // Ensure container has explicit height (use dvh for mobile toolbar)
+  const h = window.innerHeight - 110;
   container.style.height = Math.max(400, h) + 'px';
+  container.style.minHeight = Math.max(400, h) + 'px';
 
   // Force invalidate size (critical fix for hidden tab issue)
   setTimeout(() => {
@@ -72,6 +73,14 @@ function initMap(centerShopId) {
       map.invalidateSize(true);
     }
   });
+
+  // Render map category filter bar
+  const catBar = document.getElementById('map-cat-bar');
+  if (catBar && !catBar.children.length) {
+    if (typeof renderCats === 'function') {
+      renderCats('map-cat-bar', 'map', '全部');
+    }
+  }
 
   // Handle resize
   window._mapResizeHandler = window._mapResizeHandler || (() => {
