@@ -1,7 +1,7 @@
 {
   "name": "成都好好吃",
   "short_name": "成都美食",
-  "description": "99家成都地道美食指南",
+  "description": "99+家成都地道美食指南 · 地图 · 日记",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#faf5ef",
